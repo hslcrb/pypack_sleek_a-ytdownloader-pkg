@@ -878,3 +878,102 @@ body.light-theme .intro-wrapper ::selection {
     background: rgba(0, 0, 0, 0.07);
     color: #000000;
 }
+
+/* Minimal Link (No Underline) */
+.footer-area {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.link-minimal {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    border-bottom: none !important;
+}
+
+.link-minimal:hover {
+    color: var(--text-main);
+}
+
+/* Evolution Roadmap (Added to Intro v3) */
+.evolution-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.evolution-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.roadmap-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.roadmap-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 280px;
+    text-align: left;
+    position: relative;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.roadmap-item.active {
+    opacity: 1;
+    border-color: var(--accent);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.roadmap-item.done {
+    opacity: 0.8;
+}
+
+.roadmap-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.roadmap-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.roadmap-item.done .status-dot {
+    background: #50fa7b;
+}
+
+.roadmap-item.active .status-dot {
+    background: #ff79c6;
+    box-shadow: 0 0 10px #ff79c6;
+}
+
+.roadmap-item.future .status-dot {
+    background: var(--text-muted);
+}
