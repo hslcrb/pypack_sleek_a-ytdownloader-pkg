@@ -1,7 +1,7 @@
 # Sleek Downloader
 
 <p align="center">
-  <img src="static/images/logo.png" alt="Sleek Logo" width="150" height="auto">
+  <img src="sleek_downloader/static/images/logo.png" alt="Sleek Logo" width="150" height="auto">
 </p>
 
 <p align="center">
@@ -52,26 +52,28 @@ Sleek is designed for those who value **aesthetics**, **privacy**, and **control
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/hslcrb/pyflask_sleek-ytdownloader.git
-   cd pyflask_sleek-ytdownloader
+   git clone https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg.git
+   cd pypack_sleek_a-ytdownloader-pkg
    ```
 
-2. **Run the start script** (Linux/macOS)
-   This script will automatically set up a virtual environment, install dependencies, and start the server.
+2. **Install the package**
+   It is recommended to use a virtual environment.
+   ```bash
+   pip install .
+   ```
+
+3. **Run the Application**
+   You can now launch Sleek from anywhere in your terminal:
+   ```bash
+   sleek-downloader
+   ```
+
+4. **Development (Optional)**
+   If you want to run it without installing or use the helper script:
    ```bash
    ./start_server.sh
    ```
-
-3. **Manual Install** (Windows/Alternative)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # or venv\Scripts\activate on Windows
-   pip install -r requirements.txt
-   python app.py
-   ```
-
-4. **Open in Browser**
-   Navigate to `http://localhost:5000` to experience Sleek.
+   Or open `http://localhost:5000` after running the command.
 
 ## 🤝 Contributing
 

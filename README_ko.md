@@ -1,7 +1,7 @@
 # Sleek Downloader (슬릭 다운로더)
 
 <p align="center">
-  <img src="static/images/logo.png" alt="Sleek 로고" width="150" height="auto">
+  <img src="sleek_downloader/static/images/logo.png" alt="Sleek 로고" width="150" height="auto">
 </p>
 
 <p align="center">
@@ -52,26 +52,28 @@ Sleek은 **심미성**, **프라이버시**, 그리고 **통제권**을 중요�
 
 1. **저장소 클론하기**
    ```bash
-   git clone https://github.com/hslcrb/pyflask_sleek-ytdownloader.git
-   cd pyflask_sleek-ytdownloader
+   git clone https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg.git
+   cd pypack_sleek_a-ytdownloader-pkg
    ```
 
-2. **시작 스크립트 실행** (Linux/macOS)
-   이 스크립트는 가상 환경 설정, 의존성 설치, 서버 시작을 자동으로 수행합니다.
+2. **패키지 설치하기**
+   가상 환경 사용을 권장합니다.
+   ```bash
+   pip install .
+   ```
+
+3. **애플리케이션 실행**
+   터미널 어디서든 다음 명령어로 Sleek을 실행할 수 있습니다:
+   ```bash
+   sleek-downloader
+   ```
+
+4. **개발 모드 (선택 사항)**
+   설치 없이 실행하거나 개발용 스크립트를 사용하려면:
    ```bash
    ./start_server.sh
    ```
-
-3. **수동 설치** (Windows/기타)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   python app.py
-   ```
-
-4. **브라우저에서 열기**
-   `http://localhost:5000`으로 접속하여 Sleek을 경험해보세요.
+   실행 후 `http://localhost:5000`으로 접속하세요.
 
 ## 🤝 기여하기
 
