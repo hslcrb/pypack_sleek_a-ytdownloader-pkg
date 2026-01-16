@@ -168,6 +168,38 @@ function setLoading(btn, isLoading) {
     }
 }
 
-ui.url.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') analyzeUrl();
+// Theme Handling
+const toggleBtn = document.getElementById('themeToggle');
+const icon = toggleBtn.querySelector('i');
+
+function setTheme(isDark) {
+    if (isDark) {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+        icon.className = 'fas fa-sun';
+    } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+        icon.className = 'fas fa-moon';
+    }
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+// Initialize Theme
+const savedTheme = localStorage.getItem('theme');
+const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark') {
+    setTheme(true);
+} else if (savedTheme === 'light') {
+    setTheme(false);
+} else {
+    // If no save, follow system
+    setTheme(sysDark);
+}
+
+toggleBtn.addEventListener('click', () => {
+    // Current state check
+    const isCurrentDark = document.body.classList.contains('dark-theme');
+    setTheme(!isCurrentDark);
 });
