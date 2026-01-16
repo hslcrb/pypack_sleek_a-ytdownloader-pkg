@@ -557,3 +557,49 @@ select:hover {
     color: var(--text-main);
     font-weight: 500;
 }
+
+/* Intro Sections Extended */
+.intro-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.text-left {
+    text-align: left;
+    display: block;
+}
+
+.text-left h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-main);
+}
+
+.text-left p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.tech-list,
+.usage-list {
+    padding-left: 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.tech-list li,
+.usage-list li {
+    margin-bottom: 0.5rem;
+}
+
+.tech-list strong,
+.usage-list strong {
+    color: var(--text-main);
+    font-weight: 500;
+}
