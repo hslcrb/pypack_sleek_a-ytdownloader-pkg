@@ -16,13 +16,13 @@
 
 > 질문하기 전에 제공된 [문서](README_ko.md)를 먼저 읽어보시길 권장합니다.
 
-질문이 있다면 먼저 GitHub [Issues](https://github.com/hslcrb/pyflask_sleek-ytdownloader/issues)에서 비슷한 내용이 있는지 검색해보세요. 적절한 이슈를 찾았는데도 명확하지 않다면, 해당 이슈에 질문을 남겨주시면 됩니다.
+질문이 있다면 먼저 GitHub [Issues](https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg/issues)에서 비슷한 내용이 있는지 검색해보세요. 적절한 이슈를 찾았는데도 명확하지 않다면, 해당 이슈에 질문을 남겨주시면 됩니다.
 
 ## 기여하고 싶습니다
 
 ### 버그 제보
 
-- GitHub [Issues](https://github.com/hslcrb/pyflask_sleek-ytdownloader/issues)에서 **이미 제보된 버그인지 검색**해주세요.
+- GitHub [Issues](https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg/issues)에서 **이미 제보된 버그인지 검색**해주세요.
 - 문제를 다루는 열린 이슈를 찾지 못했다면, 새로운 이슈를 열어주세요. **명확한 제목과 설명**, 그리고 가능한 많은 관련 정보를 포함해주시고, 예상되는 동작과 실제 동작을 보여주는 **코드 샘플**이나 **테스트 케이스**를 첨부해주시면 좋습니다.
 
 ### 개선 제안
@@ -35,9 +35,10 @@
 
 1. **저장소를 포크(Fork)**하고 로컬에 클론(Clone)합니다.
 2. 새 브랜치를 생성합니다: `git checkout -b my-feature-branch`.
-3. 변경 사항을 적용하고 커밋합니다: `git commit -m 'Add some feature'`.
-4. 원본 브랜치로 푸시(Push)합니다: `git push origin my-feature-branch`.
-5. 풀 리퀘스트(Pull Request)를 생성합니다.
+3. **개발 모드로 설치합니다**: `pip install -e .` (변경 사항을 즉시 테스트할 수 있습니다).
+4. 변경 사항을 적용하고 커밋합니다: `git commit -m 'Add some feature'`.
+5. 원본 브랜치로 푸시(Push)합니다: `git push origin my-feature-branch`.
+6. 풀 리퀘스트(Pull Request)를 생성합니다.
 
 ## 스타일 가이드
 
