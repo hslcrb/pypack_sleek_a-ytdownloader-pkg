@@ -10,8 +10,11 @@ const ui = {
     progress: document.getElementById('progressArea'),
     fill: document.getElementById('barFill'),
     percent: document.getElementById('progPercent'),
+    percent: document.getElementById('progPercent'),
     speed: document.getElementById('progSpeed'),
-    actionButtons: document.getElementById('actionButtons')
+    actionButtons: document.getElementById('actionButtons'),
+    pathInput: document.getElementById('savePath'),
+    pathBtn: document.getElementById('changePathBtn')
 };
 
 let lastDownloadedFilename = null;
@@ -222,3 +225,58 @@ function openFile() {
         body: JSON.stringify({ filename: lastDownloadedFilename })
     });
 }
+
+function loadPath() {
+    fetch('/api/settings/path')
+        .then(res => res.json())
+        .then(data => {
+            if (data.path) {
+                ui.pathInput.value = data.path;
+            }
+        });
+}
+
+function savePath() {
+    const newPath = ui.pathInput.value.trim();
+    if (!newPath) return;
+
+    fetch('/api/settings/path', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: newPath })
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                ui.pathInput.value = data.path;
+                ui.pathInput.readOnly = true;
+                ui.pathInput.classList.remove('editing');
+                ui.pathBtn.innerHTML = '<i class="fas fa-pen"></i>';
+                showStatus('저장 경로가 변경되었습니다.', 'success');
+            } else {
+                showStatus(data.error, 'error');
+            }
+        })
+        .catch(err => showStatus('경로 저장 실패', 'error'));
+}
+
+if (ui.pathBtn) {
+    ui.pathBtn.addEventListener('click', () => {
+        if (ui.pathInput.readOnly) {
+            ui.pathInput.readOnly = false;
+            ui.pathInput.focus();
+            ui.pathInput.classList.add('editing');
+            ui.pathBtn.innerHTML = '<i class="fas fa-check"></i>';
+        } else {
+            savePath();
+        }
+    });
+
+    ui.pathInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            savePath();
+        }
+    });
+}
+
+loadPath();

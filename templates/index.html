@@ -22,6 +22,12 @@
         </div>
 
         <div class="glass-panel">
+            <div class="path-row">
+                <i class="fas fa-folder path-icon"></i>
+                <input type="text" id="savePath" readonly title="저장 경로">
+                <button id="changePathBtn" class="btn-micro" title="경로 변경"><i class="fas fa-pen"></i></button>
+            </div>
+
             <div class="input-row">
                 <input type="text" id="urlInput" placeholder="유튜브 링크 입력..." autocomplete="off">
                 <button id="analyzeBtn" class="btn btn-primary" onclick="analyzeUrl()">

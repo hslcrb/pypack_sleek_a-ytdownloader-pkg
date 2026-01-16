@@ -23,10 +23,51 @@ from flask import Flask, render_template, request, jsonify, Response, stream_wit
 import yt_dlp
 
 app = Flask(__name__)
-DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'downloads')
+from pathlib import Path
 
-if not os.path.exists(DOWNLOAD_FOLDER):
-    os.makedirs(DOWNLOAD_FOLDER)
+app = Flask(__name__)
+CONFIG_FILE = 'config.json'
+
+def get_default_download_path():
+    """Returns the system's default Downloads folder."""
+    if os.name == 'nt':
+        import winreg
+        sub_key = r'SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders'
+        downloads_guid = '{374DE290-123F-4565-9164-39C4925E467B}'
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, sub_key) as key:
+            try:
+                return winreg.QueryValueEx(key, downloads_guid)[0]
+            except OSError:
+                return str(Path.home() / "Downloads")
+    return str(Path.home() / "Downloads")
+
+def load_config():
+    default_path = get_default_download_path()
+    if not os.path.exists(CONFIG_FILE):
+        config = {'download_path': default_path}
+        save_config(config)
+        return config
+    
+    try:
+        with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+            if 'download_path' not in config:
+                config['download_path'] = default_path
+            return config
+    except:
+        return {'download_path': default_path}
+
+def save_config(config):
+    with open(CONFIG_FILE, 'w', encoding='utf-8') as f:
+        json.dump(config, f, indent=4, ensure_ascii=False)
+
+# Verify initial path exists
+initial_config = load_config()
+if not os.path.exists(initial_config['download_path']):
+    try:
+        os.makedirs(initial_config['download_path'])
+    except:
+        pass
 
 @app.route('/')
 def index():
@@ -106,8 +147,9 @@ def download():
                 elif d['status'] == 'finished':
                     yield json.dumps({'status': 'processing', 'percent': '100', 'message': '변환 및 저장 중...'}) + '\n'
 
+            download_path = load_config()['download_path']
             ydl_opts = {
-                'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(title)s.%(ext)s'),
+                'outtmpl': os.path.join(download_path, '%(title)s.%(ext)s'),
                 'quiet': True,
                 'progress_hooks': [progress_hook],
                 'noplaylist': True,
@@ -153,7 +195,7 @@ def download():
 
 @app.route('/api/open_folder', methods=['POST'])
 def open_folder():
-    path = DOWNLOAD_FOLDER
+    path = load_config()['download_path']
     if sys.platform == 'linux':
         subprocess.call(['xdg-open', path])
     elif sys.platform == 'win32':
@@ -169,7 +211,8 @@ def open_file():
     if not filename:
         return jsonify({'error': '파일명이 필요합니다.'}), 400
         
-    filepath = os.path.join(DOWNLOAD_FOLDER, filename)
+    download_path = load_config()['download_path']
+    filepath = os.path.join(download_path, filename)
     if not os.path.exists(filepath):
         return jsonify({'error': '파일을 찾을 수 없습니다.'}), 404
 
@@ -181,6 +224,29 @@ def open_file():
         subprocess.call(['open', filepath])
         
     return jsonify({'success': True})
+
+@app.route('/api/settings/path', methods=['GET', 'POST'])
+def handle_path_settings():
+    if request.method == 'GET':
+        return jsonify({'path': load_config()['download_path']})
+    
+    data = request.json
+    new_path = data.get('path')
+    if not new_path:
+        return jsonify({'error': '경로가 필요합니다.'}), 400
+    
+    # Basic path validation could go here
+    if not os.path.exists(new_path):
+        try:
+            os.makedirs(new_path)
+        except Exception as e:
+            return jsonify({'error': f'폴더를 생성할 수 없습니다: {str(e)}'}), 500
+
+    config = load_config()
+    config['download_path'] = new_path
+    save_config(config)
+    
+    return jsonify({'success': True, 'path': new_path})
 
 if __name__ == '__main__':
     print(f"Starting server... Open http://localhost:5000 in your browser.")
