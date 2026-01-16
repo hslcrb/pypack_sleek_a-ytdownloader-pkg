@@ -1,22 +1,6 @@
 import os
 import subprocess
 import sys
-from flask import Flask, render_template, request, jsonify, send_file
-import yt_dlp
-
-app = Flask(__name__)
-DOWNLOAD_FOLDER = os.path.join(os.getcwd(), 'downloads')
-
-if not os.path.exists(DOWNLOAD_FOLDER):
-    os.makedirs(DOWNLOAD_FOLDER)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-import os
-import subprocess
-import sys
 import json
 import time
 from flask import Flask, render_template, request, jsonify, Response, stream_with_context
@@ -281,6 +265,9 @@ def select_folder_dialog():
         print(f"Error opening folder dialog: {e}")
         return jsonify({'error': str(e)}), 500
 
-if __name__ == '__main__':
+def main():
     print(f"Starting server... Open http://localhost:5000 in your browser.")
     app.run(debug=True, port=5000)
+
+if __name__ == '__main__':
+    main()

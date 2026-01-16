@@ -27,4 +27,4 @@ echo "Open your browser to: http://localhost:5000"
 echo "Press Ctrl+C to stop the server."
 echo ""
 
-./venv/bin/python app.py
+./venv/bin/python sleek_downloader/app.py

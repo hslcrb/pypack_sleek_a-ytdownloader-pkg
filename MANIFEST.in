@@ -1,0 +1,8 @@
+recursive-include sleek_downloader/templates *
+recursive-include sleek_downloader/static *
+include README.md
+include README_ko.md
+include LICENSE
+include LICENSE_ko.md
+include CONTRIBUTING.md
+include CONTRIBUTING_ko.md
