@@ -105,5 +105,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 <p align="center">
-  © 2008-2026 Rheehose (Rhee Creative). Crafted with passion.
+  © 2008-2026 Rheehose (Rhee Creative). Crafted with passion.<br>
+  <em>Last Updated: 2026-01-17 (KST)</em>
 </p>

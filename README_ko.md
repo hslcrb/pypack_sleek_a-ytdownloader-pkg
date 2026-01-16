@@ -105,5 +105,6 @@ Sleek YTDner는 표준 Python 패키지로 배포됩니다. 소스에서 직접 
 
 ---
 <p align="center">
-  © 2008-2026 Rheehose (Rhee Creative). 열정으로 제작되었습니다.
+  © 2008-2026 Rheehose (Rhee Creative). 열정으로 제작되었습니다.<br>
+  <em>최종 업데이트: 2026년 1월 17일 (KST)</em>
 </p>

@@ -1,14 +1,14 @@
 {
-    "program_name": "Sleek Downloader",
+    "program_name": "Sleek YTDner",
     "version": "v1.0",
-    "release_date": "2026-01-16",
+    "release_date": "2026-01-17",
     "description": "Pure. Potent. Permanent. A minimalist glassmorphism YouTube downloader.",
     "author": {
-        "name": "Rheehose",
-        "organization": "RheeWorks"
+        "name": "Rheehose (Rhee Creative)",
+        "organization": "Rhee Creative"
     },
-    "license": "Apache-2.0",
-    "repository": "https://github.com/hslcrb/pyflask_sleek-ytdownloader",
+    "license": "MIT",
+    "repository": "https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg",
     "tech_stack": [
         "Python 3.12+",
         "Flask 3.0+",
