@@ -1,87 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SleekDownloader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sleek | 슬릭</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-    <div class="aurora-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <div class="container">
-        <h1>Sleek Tube</h1>
-        <p class="subtitle">프리미엄 유튜브 다운로더</p>
-
-        <div class="input-group">
-            <div class="input-wrapper">
-                <input type="text" id="urlInput" placeholder="https://youtube.com/watch?v=..." autocomplete="off">
-            </div>
+    <div class="wrapper">
+        <div class="title-area">
+            <h1>Sleek</h1>
+            <p class="subtitle">미니멀 유튜브 다운로더</p>
         </div>
 
-        <div class="video-info" id="videoInfo">
-            <div class="info-content">
-                <div class="thumbnail-wrapper">
-                    <img id="thumbImg" src="" alt="Thumbnail">
-                </div>
-                <div class="text-info">
-                    <h3 id="videoTitle">동영상 제목</h3>
-                    <p id="videoMeta">길이 • 게시자</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="actions">
-            <button id="analyzeBtn" class="btn btn-primary" onclick="analyzeUrl()">
-                <span class="btn-text">링크 분석하기</span>
-                <div class="btn-loader">
+        <div class="glass-panel">
+            <div class="input-row">
+                <input type="text" id="urlInput" placeholder="유튜브 링크 입력..." autocomplete="off">
+                <button id="analyzeBtn" class="btn btn-primary" onclick="analyzeUrl()">
+                    <span class="text"><i class="fas fa-arrow-right"></i></span>
                     <div class="spinner"></div>
+                </button>
+            </div>
+
+            <div class="status-msg" id="statusMsg"></div>
+
+            <div class="info-grid" id="infoGrid">
+                <div class="thumb-box">
+                    <img id="thumbImg" src="" alt="">
                 </div>
-            </button>
+                <div class="meta-box">
+                    <h3 id="videoTitle"></h3>
+                    <p id="videoMeta"></p>
 
-            <div id="downloadOptions" style="display: none; gap: 10px; flex-direction: column;">
-                <select id="qualitySelect" class="quality-select">
-                    <!-- Options populated by JS -->
-                </select>
+                    <div class="select-wrapper">
+                        <select id="qualitySelect"></select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
 
-                <button class="btn btn-primary" onclick="download('video')">
-                    <span class="btn-text"><i class="fas fa-video"></i> 비디오 다운로드 (MP4)</span>
-                    <div class="btn-loader">
+                    <button class="btn btn-primary btn-full" onclick="download('video')">
+                        <span class="text">비디오 다운로드</span>
                         <div class="spinner"></div>
-                    </div>
-                </button>
-                <button class="btn btn-secondary" onclick="download('audio')">
-                    <span class="btn-text"><i class="fas fa-music"></i> 오디오만 다운로드 (MP3)</span>
-                    <div class="btn-loader">
+                    </button>
+
+                    <button class="btn btn-secondary btn-full" onclick="download('audio')"
+                        style="margin-top: 0.5rem; background: transparent; border: 1px solid rgba(255,255,255,0.2);">
+                        <span class="text">오디오만 (MP3)</span>
                         <div class="spinner"></div>
-                    </div>
-                </button>
+                    </button>
+                </div>
+            </div>
+
+            <div class="progress-area" id="progressArea">
+                <div class="bar-bg">
+                    <div class="bar-fill" id="barFill"></div>
+                </div>
+                <div class="status-row">
+                    <span id="progPercent">0%</span>
+                    <span id="progSpeed">대기 중...</span>
+                </div>
             </div>
         </div>
-
-        <div class="progress-wrapper" id="progressWrapper">
-            <div class="progress-track">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="progress-text">
-                <span id="progressPercent">0%</span>
-                <span id="progressSpeed">준비 중...</span>
-            </div>
-        </div>
-
-        <div class="status-msg" id="statusMsg"></div>
     </div>
-
-    <button class="folder-btn" onclick="openFolder()" title="Open Downloads Folder">
-        <i class="fas fa-folder-open"></i>
-    </button>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

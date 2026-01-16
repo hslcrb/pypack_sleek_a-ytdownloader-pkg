@@ -1,92 +1,100 @@
-const uiStrings = {
-    enterUrl: 'URL을 입력해주세요',
-    analyzing: '분석 중...',
-    ready: '다운로드 준비 완료',
-    downloading: '다운로드 중...',
-    complete: '다운로드 완료! 폴더를 확인하세요.',
-    error: '오류 발생: ',
-    processing: '파일 변환 중...'
+const ui = {
+    url: document.getElementById('urlInput'),
+    analyzeBtn: document.getElementById('analyzeBtn'),
+    infoGrid: document.getElementById('infoGrid'),
+    title: document.getElementById('videoTitle'),
+    meta: document.getElementById('videoMeta'),
+    thumb: document.getElementById('thumbImg'),
+    quality: document.getElementById('qualitySelect'),
+    status: document.getElementById('statusMsg'),
+    progress: document.getElementById('progressArea'),
+    fill: document.getElementById('barFill'),
+    percent: document.getElementById('progPercent'),
+    speed: document.getElementById('progSpeed')
 };
 
-function analyzeUrl() {
-    const url = document.getElementById('urlInput').value.trim();
-    if (!url) return showStatus(uiStrings.enterUrl, 'error');
+function getQualityLabel(height) {
+    const h = parseInt(height);
+    if (!h) return '자동';
+    if (h >= 4320) return '8K 초현실';
+    if (h >= 2160) return '4K 영화급';
+    if (h >= 1440) return 'QHD 매우 선명';
+    if (h >= 1080) return 'FHD 표준';
+    if (h >= 720) return 'HD 깔끔';
+    if (h >= 480) return 'SD 데이터 절약';
+    return `${h}p 저화질`;
+}
 
-    const btn = document.getElementById('analyzeBtn');
-    setLoading(btn, true);
+function analyzeUrl() {
+    const url = ui.url.value.trim();
+    if (!url) return showStatus('링크를 입력해주세요', 'error');
+
+    setLoading(ui.analyzeBtn, true);
+    ui.infoGrid.classList.remove('active');
+    ui.progress.classList.remove('active');
+    showStatus('');
 
     fetch('/api/info', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: url })
     })
-        .then(res => {
-            if (!res.ok) return res.json().then(e => { throw new Error(e.error) });
-            return res.json();
-        })
+        .then(res => res.json())
         .then(data => {
             if (data.error) throw new Error(data.error);
 
-            // Populate info
-            document.getElementById('thumbImg').src = data.thumbnail;
-            document.getElementById('videoTitle').textContent = data.title;
-            document.getElementById('videoMeta').textContent = `${data.duration} • ${data.uploader}`;
+            ui.title.textContent = data.title;
+            ui.meta.textContent = `${data.duration} • ${data.uploader}`;
+            ui.thumb.src = data.thumbnail;
 
-            // Populate options
-            const select = document.getElementById('qualitySelect');
-            select.innerHTML = '';
-            data.formats.forEach((fmt, index) => {
-                const opt = document.createElement('option');
-                opt.value = fmt.format_id;
-                opt.textContent = `${fmt.resolution} (${fmt.ext.toUpperCase()}) - ${fmt.filesize ? (fmt.filesize / 1024 / 1024).toFixed(1) + 'MB' : 'Unknown size'}`;
-                if (index === 0) opt.selected = true; // Best quality default
-                opt.className = 'quality-option';
-                select.appendChild(opt);
+            // Custom Quality Logic
+            ui.quality.innerHTML = '';
+
+            // formats is sorted by height desc from backend
+            // Filter unique heights for cleaner dropdown, prefer highest filesize if multiple same height? No, just list distinct heights
+            const seenHeights = new Set();
+            data.formats.forEach(fmt => {
+                if (!fmt.height) return;
+                // Round slightly or just use raw? yt-dlp returns exact.
+                // Some formats might be 1080, others 1081? usually standard.
+
+                if (!seenHeights.has(fmt.height)) {
+                    seenHeights.add(fmt.height);
+                    const opt = document.createElement('option');
+                    opt.value = fmt.format_id;
+
+                    let sizeStr = '';
+                    if (fmt.filesize) {
+                        sizeStr = ` (${(fmt.filesize / 1024 / 1024).toFixed(1)}MB)`;
+                    }
+
+                    opt.textContent = `${getQualityLabel(fmt.height)} - ${fmt.height}p${sizeStr}`;
+                    ui.quality.appendChild(opt);
+                }
             });
 
-            // Show info part
-            document.getElementById('videoInfo').classList.add('active');
+            // Add "Audio Only" placeholder if no video? No, audio button is separate.
 
-            // Switch buttons
-            btn.style.display = 'none';
-            document.getElementById('downloadOptions').style.display = 'flex';
-
-            showStatus(uiStrings.ready, 'success');
+            ui.infoGrid.classList.add('active');
         })
         .catch(err => {
-            showStatus(uiStrings.error + err.message, 'error');
+            showStatus(err.message || '분석 중 오류 발생', 'error');
         })
         .finally(() => {
-            setLoading(btn, false);
+            setLoading(ui.analyzeBtn, false);
         });
 }
 
 async function download(type) {
-    const url = document.getElementById('urlInput').value.trim();
-    const formatId = document.getElementById('qualitySelect').value;
+    const url = ui.url.value.trim();
+    const formatId = ui.quality.value;
 
-    const btns = document.querySelectorAll('#downloadOptions .btn');
-    const activeBtn = type === 'video' ? btns[0] : btns[1];
+    // Find button
+    const btn = event.currentTarget; // Simple trick or pass logic
+    setLoading(btn, true);
 
-    // Disable UI
-    btns.forEach(b => {
-        b.disabled = true;
-        if (b !== activeBtn) b.style.opacity = '0.5';
-    });
-    setLoading(activeBtn, true);
-
-    // Show Progress UI
-    const progressWrapper = document.getElementById('progressWrapper');
-    const progressFill = document.getElementById('progressFill');
-    const progressPercent = document.getElementById('progressPercent');
-    const progressSpeed = document.getElementById('progressSpeed');
-
-    progressWrapper.classList.add('active');
-    progressFill.style.width = '0%';
-    progressPercent.textContent = '0%';
-    progressSpeed.textContent = '연결 중...';
-
-    showStatus(uiStrings.downloading, 'info');
+    ui.progress.classList.add('active');
+    updateProgress(0, '연결 중...');
 
     try {
         const response = await fetch('/api/download', {
@@ -109,49 +117,45 @@ async function download(type) {
 
             buffer += decoder.decode(value, { stream: true });
             const lines = buffer.split('\n');
-            buffer = lines.pop(); // Keep incomplete line
+            buffer = lines.pop();
 
             for (const line of lines) {
                 if (!line.trim()) continue;
                 try {
                     const data = JSON.parse(line);
-
                     if (data.status === 'downloading') {
-                        progressFill.style.width = data.percent + '%';
-                        progressPercent.textContent = data.percent + '%';
-                        progressSpeed.textContent = data.speed;
+                        updateProgress(data.percent, data.speed);
                     } else if (data.status === 'processing') {
-                        progressFill.style.width = '100%';
-                        progressPercent.textContent = '100%';
-                        progressSpeed.textContent = uiStrings.processing;
+                        updateProgress(100, '저장 중... 잠시만요');
                     } else if (data.status === 'complete') {
-                        showStatus(uiStrings.complete, 'success');
-                        progressFill.style.width = '100%';
-                        progressPercent.textContent = '100%';
-                        progressSpeed.textContent = '완료';
+                        updateProgress(100, '완료!');
+                        showStatus(`다운로드 완료: ${data.filename}`, 'success');
+                        setTimeout(() => {
+                            // Optional: Reset UI or keep it
+                            setLoading(btn, false);
+                        }, 1000);
+                        return;
                     } else if (data.status === 'error') {
                         throw new Error(data.message);
                     }
-                } catch (e) {
-                    // Ignore JSON parse errors for partial chunks if any
-                    // console.error(e); // Uncomment for debugging
-                }
+                } catch (e) { }
             }
         }
     } catch (err) {
-        showStatus(uiStrings.error + err.message, 'error');
-    } finally {
-        setLoading(activeBtn, false);
-        btns.forEach(b => {
-            b.disabled = false;
-            b.style.opacity = '1';
-        });
-        // Leave progress bar active for a moment then hide? No, keep it visible as record
+        showStatus('실패: ' + err.message, 'error');
+        setLoading(btn, false);
     }
 }
 
-function openFolder() {
-    fetch('/api/open_folder', { method: 'POST' });
+function updateProgress(percent, speed) {
+    ui.fill.style.width = percent + '%';
+    ui.percent.textContent = percent + '%';
+    ui.speed.textContent = speed;
+}
+
+function showStatus(msg, type) {
+    ui.status.textContent = msg;
+    ui.status.className = 'status-msg ' + (type || '');
 }
 
 function setLoading(btn, isLoading) {
@@ -164,18 +168,6 @@ function setLoading(btn, isLoading) {
     }
 }
 
-function showStatus(msg, type) {
-    const el = document.getElementById('statusMsg');
-    el.textContent = msg;
-    el.className = 'status-msg active';
-    if (type === 'error') el.style.color = '#ef4444';
-    else if (type === 'success') el.style.color = '#00f3ff';
-    else el.style.color = '#94a3b8';
-}
-
-// Enter key support
-document.getElementById('urlInput').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        analyzeUrl();
-    }
+ui.url.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') analyzeUrl();
 });

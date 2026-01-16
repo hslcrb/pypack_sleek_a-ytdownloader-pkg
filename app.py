@@ -72,7 +72,7 @@ def get_info():
                 'thumbnail': info.get('thumbnail'),
                 'duration': info.get('duration_string'),
                 'uploader': info.get('uploader'),
-                'formats': formats[:5], # Top 5 resolutions
+                'formats': formats, # Return all formats
                 'original_url': url
             })
     except Exception as e:
