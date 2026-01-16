@@ -59,4 +59,8 @@ Before you ask a question, it is best to search for existing [Issues](https://gi
 
 Sleek is designed with privacy in mind. Please do not submit code that adds tracking, analytics, or communicates with unauthorized external servers without explicit user consent and transparency.
 
+
 Thank you for contributing!
+
+---
+[English](CONTRIBUTING.md) | [한국어](CONTRIBUTING_ko.md)

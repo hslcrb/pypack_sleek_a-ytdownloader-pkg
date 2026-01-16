@@ -1,0 +1,19 @@
+{
+    "program_name": "Sleek Downloader",
+    "version": "v1.0",
+    "release_date": "2026-01-16",
+    "description": "Pure. Potent. Permanent. A minimalist glassmorphism YouTube downloader.",
+    "author": {
+        "name": "Rheehose",
+        "organization": "RheeWorks"
+    },
+    "license": "Apache-2.0",
+    "repository": "https://github.com/hslcrb/pyflask_sleek-ytdownloader",
+    "tech_stack": [
+        "Python 3.12+",
+        "Flask 3.0+",
+        "yt-dlp",
+        "Vanilla JS",
+        "CSS3 Glassmorphism"
+    ]
+}
