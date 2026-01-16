@@ -45,10 +45,15 @@ Sleek is designed for those who value **aesthetics**, **privacy**, and **control
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- FFmpeg (required for merging video and audio streams)
+- **Python 3.8+**: Ensure you have a compatible version installed.
+- **FFmpeg**: Required for merging high-quality video and audio streams.
+  - *Ubuntu/Debian*: `sudo apt install ffmpeg`
+  - *macOS*: `brew install ffmpeg`
+  - *Windows*: Download from [FFmpeg.org](https://ffmpeg.org/) and add to PATH.
 
 ### Installation
+
+Sleek is distributed as a standard Python package. You can install it directly from the source.
 
 1. **Clone the repository**
    ```bash
@@ -56,24 +61,39 @@ Sleek is designed for those who value **aesthetics**, **privacy**, and **control
    cd pypack_sleek_a-ytdownloader-pkg
    ```
 
-2. **Install the package**
-   It is recommended to use a virtual environment.
+2. **Install with pip**
+   We recommend installing in a virtual environment to keep your system clean.
    ```bash
+   # Create and activate virtual environment (Optional but Recommended)
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+
+   # Install the package
    pip install .
    ```
 
-3. **Run the Application**
-   You can now launch Sleek from anywhere in your terminal:
+   For developers wishing to modify the code:
+   ```bash
+   pip install -e .
+   ```
+
+## 💻 Usage
+
+Once installed, **Sleek** is available as a global command in your environment.
+
+1. **Launch the Server**
+   Navigate to the directory where you want to store configuration and downloads (or rely on default settings), then run:
    ```bash
    sleek-downloader
    ```
 
-4. **Development (Optional)**
-   If you want to run it without installing or use the helper script:
-   ```bash
-   ./start_server.sh
+2. **Access the Interface**
+   Open your web browser and navigate to:
    ```
-   Or open `http://localhost:5000` after running the command.
+   http://localhost:5000
+   ```
+   
+   The application will automatically create a `config.json` and a `downloads` folder in your current working directory if not configured otherwise.
 
 ## 🤝 Contributing
 

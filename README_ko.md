@@ -42,13 +42,17 @@ Sleek은 **심미성**, **프라이버시**, 그리고 **통제권**을 중요�
 - **라이선스**: Apache 2.0
 
 ## 🚀 시작하기
-
 ### 필수 조건
 
-- Python 3.8 이상
-- FFmpeg (비디오와 오디오 스트림 병합에 필요)
+- **Python 3.8+**: 호환되는 버전이 설치되어 있어야 합니다.
+- **FFmpeg**: 고품질 비디오 및 오디오 병합을 위해 필요합니다.
+  - *Ubuntu/Debian*: `sudo apt install ffmpeg`
+  - *macOS*: `brew install ffmpeg`
+  - *Windows*: [FFmpeg.org](https://ffmpeg.org/)에서 다운로드하여 PATH에 추가하세요.
 
 ### 설치 방법
+
+Sleek은 표준 Python 패키지로 배포됩니다. 소스에서 직접 설치할 수 있습니다.
 
 1. **저장소 클론하기**
    ```bash
@@ -56,24 +60,39 @@ Sleek은 **심미성**, **프라이버시**, 그리고 **통제권**을 중요�
    cd pypack_sleek_a-ytdownloader-pkg
    ```
 
-2. **패키지 설치하기**
-   가상 환경 사용을 권장합니다.
+2. **pip로 설치하기**
+   시스템을 깨끗하게 유지하기 위해 가상 환경 사용을 권장합니다.
    ```bash
+   # 가상 환경 생성 및 활성화 (선택 사항이지만 권장됨)
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+
+   # 패키지 설치
    pip install .
    ```
 
-3. **애플리케이션 실행**
-   터미널 어디서든 다음 명령어로 Sleek을 실행할 수 있습니다:
+   코드를 수정하려는 개발자의 경우:
+   ```bash
+   pip install -e .
+   ```
+
+## 💻 사용 방법
+
+설치가 완료되면, **Sleek**을 시스템 어디에서나 명령어로 실행할 수 있습니다.
+
+1. **서버 실행**
+   설정 파일과 다운로드 폴더를 저장할 디렉토리로 이동한 후 실행하세요:
    ```bash
    sleek-downloader
    ```
 
-4. **개발 모드 (선택 사항)**
-   설치 없이 실행하거나 개발용 스크립트를 사용하려면:
-   ```bash
-   ./start_server.sh
+2. **인터페이스 접속**
+   웹 브라우저를 열고 다음 주소로 이동하세요:
    ```
-   실행 후 `http://localhost:5000`으로 접속하세요.
+   http://localhost:5000
+   ```
+   
+   별도의 설정이 없다면 애플리케이션은 현재 작업 디렉토리에 `config.json`과 `downloads` 폴더를 자동으로 생성합니다.
 
 ## 🤝 기여하기
 
