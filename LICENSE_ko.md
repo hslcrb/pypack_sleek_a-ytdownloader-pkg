@@ -1,28 +1,9 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+MIT 라이선스
 
-   사용, 복제 및 배포에 관한 약관 및 조건
+저작권 (c) 2008-2026 Rheehose (Rhee Creative)
 
-   (참고: 이 번역본은 사용자의 편의를 위해 제공되는 것으로, 법적 효력은 영문 원본(LICENSE)에 있습니다.)
+본 소프트웨어의 복사본과 관련된 문서 파일(이하 "소프트웨어")을 획득하는 모든 사람에게 귀하는 다음의 조건에 따라 소프트웨어를 무상으로 제한 없이 취급할 수 있는 권한을 부여받습니다. 여기에는 소프트웨어의 사본을 사용, 복사, 수정, 병합, 게시, 배포, 서브라이선스 설정 및/또는 판매할 수 있는 권한 및 소프트웨어를 제공받은 사람에게 그러한 권한을 부여할 수 있는 권한이 포함됩니다.
 
-   1. 정의.
+위의 저작권 고지 및 본 허가 고지는 소프트웨어의 모든 사본 또는 상당 부분에 포함되어야 합니다.
 
-      "라이선스"는 문서의 1절부터 9절까지 정의된 사용, 복제 및 배포에 관한 약관 및 조건을 의미합니다.
-
-      "라이선스 제공자"는 라이선스를 부여하는 저작권 소유자 또는 저작권 소유자로부터 권한을 위임받은 주체를 의미합니다.
-      (이하 생략 - 원본 참조)
-
-   Copyright 2026 Rheehose (RheeWorks)
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+소프트웨어는 "있는 그대로" 제공되며, 상품성, 특정 목적에의 적합성 및 비침해에 대한 보증을 포함하여(단, 이에 한정되지 않음) 명시적이든 묵시적이든 어떠한 종류의 보증도 없이 제공됩니다. 어떠한 경우에도 저자 또는 저작권 보유자는 계약상 조치, 불법 행위 또는 기타 방식으로 소프트웨어와 관련하여 또는 소프트웨어의 사용 또는 기타 거래로 인해 발생하는 청구, 손해 또는 기타 책임에 대해 책임을 지지 않습니다.

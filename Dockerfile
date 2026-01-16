@@ -23,5 +23,5 @@ WORKDIR /data
 # Expose the port
 EXPOSE 5000
 
-# Run the application
+# Run the application (using the package script)
 CMD ["sleek-downloader"]

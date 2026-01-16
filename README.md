@@ -1,7 +1,7 @@
-# Sleek Downloader
+# Sleek YTDner
 
 <p align="center">
-  <img src="sleek_downloader/static/images/logo.png" alt="Sleek Logo" width="150" height="auto">
+  <img src="sleek_ytdner/static/images/logo.png" alt="Sleek Logo" width="150" height="auto">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
   <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python Version">
   <img src="https://img.shields.io/badge/Flask-3.0%2B-lightgrey" alt="Flask">
 </p>
@@ -21,7 +21,7 @@
 
 ## 📖 Introduction
 
-**Sleek** is a modern, minimalist YouTube downloader and media archiver. Built with **Flask** and powered by the robust **yt-dlp** engine, it wraps powerful functionality in a stunning, high-performance Glassmorphism UI.
+**Sleek YTDner** is a modern, minimalist YouTube downloader and media archiver. Built with **Flask** and powered by the robust **yt-dlp** engine, it wraps powerful functionality in a stunning, high-performance Glassmorphism UI.
 
 Sleek is designed for those who value **aesthetics**, **privacy**, and **control**.
 
@@ -39,7 +39,7 @@ Sleek is designed for those who value **aesthetics**, **privacy**, and **control
 - **Backend**: Python 3.12+, Flask
 - **Core Engine**: yt-dlp
 - **Frontend**: HTML5, Vanilla JS, CSS3 (Variables, Flexbox/Grid, Backdrop Filter)
-- **License**: Apache 2.0
+- **License**: MIT
 
 ## 🚀 Getting Started
 
@@ -53,7 +53,7 @@ Sleek is designed for those who value **aesthetics**, **privacy**, and **control
 
 ### Installation
 
-Sleek is distributed as a standard Python package. You can install it directly from the source.
+Sleek YTDner is distributed as a standard Python package. You can install it directly from the source.
 
 1. **Clone the repository**
    ```bash
@@ -79,7 +79,7 @@ Sleek is distributed as a standard Python package. You can install it directly f
 
 ## 💻 Usage
 
-Once installed, **Sleek** is available as a global command in your environment.
+Once installed, **Sleek YTDner** is available as a global command in your environment.
 
 1. **Launch the Server**
    Navigate to the directory where you want to store configuration and downloads (or rely on default settings), then run:
@@ -101,9 +101,9 @@ Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) fo
 
 ## 📄 License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 <p align="center">
-  © 2026 RheeWorks. Crafted with passion.
+  © 2008-2026 Rheehose (Rhee Creative). Crafted with passion.
 </p>

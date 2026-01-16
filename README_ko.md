@@ -1,7 +1,7 @@
-# Sleek Downloader (슬릭 다운로더)
+# Sleek YTDner (슬릭 YTDner)
 
 <p align="center">
-  <img src="sleek_downloader/static/images/logo.png" alt="Sleek 로고" width="150" height="auto">
+  <img src="sleek_ytdner/static/images/logo.png" alt="Sleek 로고" width="150" height="auto">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE_ko.md"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="라이선스"></a>
+  <a href="LICENSE_ko.md"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="라이선스"></a>
   <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python 버전">
   <img src="https://img.shields.io/badge/Flask-3.0%2B-lightgrey" alt="Flask">
 </p>
@@ -21,7 +21,7 @@
 
 ## 📖 소개
 
-**Sleek(슬릭)**은 현대적이고 미니멀한 유튜브 다운로더이자 미디어 아카이버입니다. **Flask**를 기반으로 강력한 **yt-dlp** 엔진을 활용하며, 이 모든 기능을 아름다운 고성능 글래스모피즘(Glassmorphism) UI로 감쌌습니다.
+**Sleek YTDner**는 현대적이고 미니멀한 유튜브 다운로더이자 미디어 아카이버입니다. **Flask**를 기반으로 강력한 **yt-dlp** 엔진을 활용하며, 이 모든 기능을 아름다운 고성능 글래스모피즘(Glassmorphism) UI로 감쌌습니다.
 
 Sleek은 **심미성**, **프라이버시**, 그리고 **통제권**을 중요시하는 분들을 위해 디자인되었습니다.
 
@@ -39,9 +39,10 @@ Sleek은 **심미성**, **프라이버시**, 그리고 **통제권**을 중요�
 - **백엔드**: Python 3.12+, Flask
 - **코어 엔진**: yt-dlp
 - **프론트엔드**: HTML5, Vanilla JS, CSS3 (Variables, Flexbox/Grid, Backdrop Filter)
-- **라이선스**: Apache 2.0
+- **라이선스**: MIT
 
 ## 🚀 시작하기
+
 ### 필수 조건
 
 - **Python 3.8+**: 호환되는 버전이 설치되어 있어야 합니다.
@@ -52,7 +53,7 @@ Sleek은 **심미성**, **프라이버시**, 그리고 **통제권**을 중요�
 
 ### 설치 방법
 
-Sleek은 표준 Python 패키지로 배포됩니다. 소스에서 직접 설치할 수 있습니다.
+Sleek YTDner는 표준 Python 패키지로 배포됩니다. 소스에서 직접 설치할 수 있습니다.
 
 1. **저장소 클론하기**
    ```bash
@@ -78,7 +79,7 @@ Sleek은 표준 Python 패키지로 배포됩니다. 소스에서 직접 설치�
 
 ## 💻 사용 방법
 
-설치가 완료되면, **Sleek**을 시스템 어디에서나 명령어로 실행할 수 있습니다.
+설치가 완료되면, **Sleek YTDner**를 시스템 어디에서나 명령어로 실행할 수 있습니다.
 
 1. **서버 실행**
    설정 파일과 다운로드 폴더를 저장할 디렉토리로 이동한 후 실행하세요:
@@ -100,9 +101,9 @@ Sleek은 표준 Python 패키지로 배포됩니다. 소스에서 직접 설치�
 
 ## 📄 라이선스
 
-이 프로젝트는 Apache License 2.0 하에 배포됩니다. 자세한 내용은 [LICENSE_ko.md](LICENSE_ko.md) 파일을 참조하세요.
+이 프로젝트는 MIT License 하에 배포됩니다. 자세한 내용은 [LICENSE_ko.md](LICENSE_ko.md) 파일을 참조하세요.
 
 ---
 <p align="center">
-  © 2026 Rheehose (RheeWorks). 열정으로 제작되었습니다.
+  © 2008-2026 Rheehose (Rhee Creative). 열정으로 제작되었습니다.
 </p>

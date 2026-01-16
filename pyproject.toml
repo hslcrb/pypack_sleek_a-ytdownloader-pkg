@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyflask-sleek-ytdownloader"
-version = "1.0.0"
+name = "sleek_ytdner"
+version = "1.0"
 description = "A sleek, theme-aware Youtube Downloader using Flask and yt-dlp"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Rheehose", email = "rheehose@gmail.com"}
+    {name = "Rheehose (Rhee Creative)", email = "rheehose@rheehose.com"}
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -24,10 +24,10 @@ dependencies = [
 ]
 
 [project.scripts]
-sleek-downloader = "sleek_downloader.app:main"
+sleek-downloader = "sleek_ytdner.app:main"
 
 [tool.setuptools]
-packages = ["sleek_downloader"]
+packages = ["sleek_ytdner"]
 
 [tool.setuptools.package-data]
-sleek_downloader = ["static/**/*", "templates/*"]
+sleek_ytdner = ["static/**/*", "templates/*"]

@@ -1,4 +1,4 @@
-# Contributing to Sleek
+# Contributing to Sleek YTDner
 
 First off, thanks for taking the time to contribute! ❤️
 
@@ -16,7 +16,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 > If you want to ask a question, we assume that you have read the available [Documentation](README.md).
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/hslcrb/pypack_sleek-ytdownloader-pkg/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+Before you ask a question, it is best to search for existing [Issues](https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
 ## I Want To Contribute
 
@@ -58,8 +58,7 @@ Before you ask a question, it is best to search for existing [Issues](https://gi
 
 ## Data Privacy & Safety
 
-Sleek is designed with privacy in mind. Please do not submit code that adds tracking, analytics, or communicates with unauthorized external servers without explicit user consent and transparency.
-
+Sleek YTDner is designed with privacy in mind. Please do not submit code that adds tracking, analytics, or communicates with unauthorized external servers without explicit user consent and transparency.
 
 Thank you for contributing!
 
