@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import subprocess
 import sys
 import json
@@ -6,10 +7,14 @@ import time
 from flask import Flask, render_template, request, jsonify, Response, stream_with_context
 import yt_dlp
 
-app = Flask(__name__)
-from pathlib import Path
-
-app = Flask(__name__)
+if getattr(sys, 'frozen', False):
+    # PyInstaller creates a temp folder and stores path in _MEIPASS
+    base_path = sys._MEIPASS
+    app = Flask(__name__, 
+                template_folder=os.path.join(base_path, 'sleek_ytdner', 'templates'),
+                static_folder=os.path.join(base_path, 'sleek_ytdner', 'static'))
+else:
+    app = Flask(__name__)
 CONFIG_FILE = 'config.json'
 
 def get_default_download_path():
