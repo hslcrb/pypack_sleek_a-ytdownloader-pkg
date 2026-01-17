@@ -12,7 +12,8 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
   <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python Version">
-  <img src="https://img.shields.io/badge/Flask-3.0%2B-lightgrey" alt="Flask">
+  <img src="https://img.shields.io/badge/PyPI-v1.0-orange" alt="PyPI">
+  <img src="https://img.shields.io/badge/Docker-GHCR-blue" alt="Docker">
 </p>
 
 ---
@@ -23,88 +24,52 @@
 
 **Sleek YTDner** is a modern, minimalist YouTube downloader and media archiver. Built with **Flask** and powered by the robust **yt-dlp** engine, it wraps powerful functionality in a stunning, high-performance Glassmorphism UI.
 
-Sleek is designed for those who value **aesthetics**, **privacy**, and **control**.
+## 🚀 Installation & Setup
 
-### ✨ Key Features
+Choose your preferred way to use Sleek YTDner:
 
-- **💎 Glassmorphism Design**: A beautiful, translucent user interface that blends with your system theme.
-- **🌗 Adaptive Theming**: Automatically syncs with your system's Light/Dark mode, with a manual toggle.
-- **🚀 8K Ready**: Supports extracting the highest possible quality video (up to 8K HDR) and lossless audio.
-- **🔒 Privacy First**: All processing happens locally. No external servers, no tracking, complete data sovereignty.
-- **📂 Smart Automation**: Remembers your preferred download paths and optimizes file formats automatically.
-- **⚡ Async Processing**: Non-blocking download streams for a responsive experience.
+### 1. Direct Executable (No Python Required)
+Download the standalone executable for your OS from the [Latest Releases](https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg/releases).
 
-## 🛠️ Technology Stack
+*   **Windows**: Download `sleek-downloader-v1.0-windows.zip`, extract, and run `sleek-downloader.exe`.
+*   **macOS**: Download `sleek-downloader-v1.0-macos.zip`, extract, and run `sleek-downloader`.
+*   **Linux**: Download `sleek-downloader-v1.0-linux.zip`, extract, and run `./sleek-downloader`.
 
-- **Backend**: Python 3.12+, Flask
-- **Core Engine**: yt-dlp
-- **Frontend**: HTML5, Vanilla JS, CSS3 (Variables, Flexbox/Grid, Backdrop Filter)
-- **License**: MIT
+### 2. Fast Terminal Install (Via PyPI)
+If you have Python installed, you can install Sleek YTDner instantly:
+```bash
+pip install sleek-ytdner
+sleek-downloader
+```
 
-## 🚀 Getting Started
+### 3. Docker (Containerized)
+Run Sleek YTDner without installing anything on your host system:
+```bash
+docker pull ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.0
+docker run -p 5000:5000 -v $(pwd)/downloads:/data/downloads ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.0
+```
 
-### Prerequisites
+## 🛠️ Prerequisites (For Python/Source Install)
 
-- **Python 3.8+**: Ensure you have a compatible version installed.
-- **FFmpeg**: Required for merging high-quality video and audio streams.
+- **Python 3.8+**
+- **FFmpeg**: Required for high-quality merging.
   - *Ubuntu/Debian*: `sudo apt install ffmpeg`
   - *macOS*: `brew install ffmpeg`
-  - *Windows*: Download from [FFmpeg.org](https://ffmpeg.org/) and add to PATH.
-
-### Installation
-
-Sleek YTDner is distributed as a standard Python package. You can install it directly from the source.
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/hslcrb/pypack_sleek_a-ytdownloader-pkg.git
-   cd pypack_sleek_a-ytdownloader-pkg
-   ```
-
-2. **Install with pip**
-   We recommend installing in a virtual environment to keep your system clean.
-   ```bash
-   # Create and activate virtual environment (Optional but Recommended)
-   python -m venv venv
-   source venv/bin/activate  # Windows: venv\Scripts\activate
-
-   # Install the package
-   pip install .
-   ```
-
-   For developers wishing to modify the code:
-   ```bash
-   pip install -e .
-   ```
+  - *Windows*: Download from [FFmpeg.org](https://ffmpeg.org/).
 
 ## 💻 Usage
 
-Once installed, **Sleek YTDner** is available as a global command in your environment.
+Once launched via any method:
+1. Open your browser to `http://localhost:5000`.
+2. Paste a YouTube URL.
+3. Choose quality and download.
 
-1. **Launch the Server**
-   Navigate to the directory where you want to store configuration and downloads (or rely on default settings), then run:
-   ```bash
-   sleek-downloader
-   ```
-
-2. **Access the Interface**
-   Open your web browser and navigate to:
-   ```
-   http://localhost:5000
-   ```
-   
-   The application will automatically create a `config.json` and a `downloads` folder in your current working directory if not configured otherwise.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+The application automatically creates a `config.json` and a `downloads` folder in your current directory.
 
 ## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - © 2008-2026 Rheehose (Rhee Creative).
 
 ---
 <p align="center">
-  © 2008-2026 Rheehose (Rhee Creative). Crafted with passion.<br>
   <em>Last Updated: 2026-01-17 (KST)</em>
 </p>
