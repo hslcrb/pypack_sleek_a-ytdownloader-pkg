@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sleek_ytdner"
-version = "1.0"
+version = "1.1"
 description = "A sleek, theme-aware Youtube Downloader using Flask and yt-dlp"
 readme = "README.md"
 requires-python = ">=3.8"
