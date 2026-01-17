@@ -1,0 +1,70 @@
+name: Build and Release Executables
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            artifact_name: sleek-downloader-linux
+            asset_name: sleek-downloader-v1.0-linux.zip
+          - os: windows-latest
+            artifact_name: sleek-downloader-windows
+            asset_name: sleek-downloader-v1.0-windows.zip
+          - os: macos-latest
+            artifact_name: sleek-downloader-macos
+            asset_name: sleek-downloader-v1.0-macos.zip
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install Flask yt-dlp pyinstaller
+
+      - name: Build with PyInstaller
+        shell: bash
+        run: |
+          pyinstaller --onedir --noconfirm --name sleek-downloader \
+            --add-data "sleek_ytdner/templates:sleek_ytdner/templates" \
+            --add-data "sleek_ytdner/static:sleek_ytdner/static" \
+            sleek_ytdner/app.py
+
+      - name: Post-build Rename (Optional, PyInstaller defaults to _internal)
+        shell: bash
+        run: |
+          echo "Build complete."
+
+      - name: Zip Artifact (Unix)
+        if: runner.os != 'Windows'
+        run: |
+          cd dist
+          zip -r ../${{ matrix.asset_name }} sleek-downloader
+
+      - name: Zip Artifact (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist/sleek-downloader -DestinationPath ${{ matrix.asset_name }}
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: ${{ matrix.asset_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
