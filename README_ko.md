@@ -1,7 +1,7 @@
 # Sleek YTDner (슬릭 YTDner)
 
 <p align="center">
-  <img src="sleek_ytdner/static/images/logo.png" alt="Sleek 로고" width="150" height="auto">
+  <img src="https://raw.githubusercontent.com/hslcrb/pypack_sleek_a-ytdownloader-pkg/main/sleek_ytdner/static/images/logo.png" alt="Sleek 로고" width="150" height="auto">
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE_ko.md"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="라이선스"></a>
   <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python 버전">
-  <img src="https://img.shields.io/badge/PyPI-v1.1-orange" alt="PyPI">
+  <img src="https://img.shields.io/badge/PyPI-v1.2-orange" alt="PyPI">
   <img src="https://img.shields.io/badge/Docker-GHCR-blue" alt="Docker">
 </p>
 
@@ -45,8 +45,8 @@ sleek-downloader
 ### 3. 도커 (Docker)
 시스템에 아무것도 설치하지 않고 컨테이너로 실행하세요:
 ```bash
-docker pull ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.1
-docker run -p 5000:5000 -v $(pwd)/downloads:/data/downloads ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.1
+docker pull ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.2
+docker run -p 5000:5000 -v $(pwd)/downloads:/data/downloads ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.2
 ```
 
 ## 🛠️ 필수 조건 (파이썬/소스 설치 시)

@@ -1,7 +1,7 @@
 # Sleek YTDner
 
 <p align="center">
-  <img src="sleek_ytdner/static/images/logo.png" alt="Sleek Logo" width="150" height="auto">
+  <img src="https://raw.githubusercontent.com/hslcrb/pypack_sleek_a-ytdownloader-pkg/main/sleek_ytdner/static/images/logo.png" alt="Sleek Logo" width="150" height="auto">
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
   <img src="https://img.shields.io/badge/Python-3.12%2B-blue" alt="Python Version">
-  <img src="https://img.shields.io/badge/PyPI-v1.1-orange" alt="PyPI">
+  <img src="https://img.shields.io/badge/PyPI-v1.2-orange" alt="PyPI">
   <img src="https://img.shields.io/badge/Docker-GHCR-blue" alt="Docker">
 </p>
 
@@ -45,8 +45,8 @@ sleek-downloader
 ### 3. Docker (Containerized)
 Run Sleek YTDner without installing anything on your host system:
 ```bash
-docker pull ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.1
-docker run -p 5000:5000 -v $(pwd)/downloads:/data/downloads ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.1
+docker pull ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.2
+docker run -p 5000:5000 -v $(pwd)/downloads:/data/downloads ghcr.io/hslcrb/pypack_sleek_a-ytdownloader-pkg:v1.2
 ```
 
 ## 🛠️ Prerequisites (For Python/Source Install)
